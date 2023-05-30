@@ -1,0 +1,4 @@
+@media all and(max-width:960px)
+{.left{visibility: hidden;}
+.right{margin-left: 0px;}}
+    
