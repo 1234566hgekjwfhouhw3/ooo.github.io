@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enxuan Chang PORTFOLIO</title>
     <style>
-        /* 基础样式 */
+        /* Base styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -18,12 +18,12 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 10vh; /* 移动版保持 10% 高度 */
+            height: 10vh;
             background-color: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             z-index: 1000;
-            padding: 0 5%; /* 修改 padding，左右都设为 5% */
+            padding: 0 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -70,10 +70,12 @@
         section {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 2rem;
             box-sizing: border-box;
+            text-align: center;
         }
         #about {
             background-color: #e0e0e0;
@@ -102,33 +104,32 @@
             transform: scale(1.5);
         }
 
-        /* 移动版样式 */
+        /* Mobile styles */
         main {
-            padding-top: 60px; /* 为 header 留出空间 */
+            padding-top: 60px;
         }
 
-        /* 默认隐藏 #menu-content */
         #menu-content {
             display: none;
         }
 
-        /* 电脑版两栏布局样式 */
+        /* Desktop styles */
         @media screen and (min-width: 768px) {
             body {
                 font-size: 16px;
             }
 
             h2 {
-                font-size: 1.8em; /* 减小标题大小 */
+                font-size: 1.8em;
             }
 
             header {
-                height: 12vh; /* 电脑版改为 12% 高度 */
+                height: 12vh;
             }
 
             main {
                 display: flex;
-                padding-top: 12vh; /* 调整为与 header 高度一致 */
+                padding-top: 12vh;
             }
 
             #menu-content {
@@ -139,7 +140,7 @@
                 left: 0;
                 top: 12vh;
                 overflow-y: auto;
-                padding: calc(5% + 1rem) 1rem 1rem calc(5% + 1rem); /* 修改上内边距 */
+                padding: calc(5% + 1rem) 1rem 1rem calc(5% + 1rem);
                 box-sizing: border-box;
                 background-color: #f0f0f0;
                 border-right: 1px solid #4d4d4d;
@@ -148,7 +149,7 @@
             #menu-content ul {
                 list-style-type: none;
                 padding: 0;
-                margin: 0; /* 确保 ul 没有默认边距 */
+                margin: 0;
             }
 
             #menu-content li {
@@ -163,17 +164,17 @@
 
             #content-wrapper {
                 width: 70%;
-                margin-left: 30%; /* 保持不变，因为左栏总宽度仍为 30% */
+                margin-left: 30%;
                 display: flex;
                 flex-direction: column;
-                padding-bottom: 60px; /* 为 footer 留出空间 */
+                padding-bottom: 60px;
             }
 
             #home, #about, #contact {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: center;
                 padding-top: 2rem;
             }
 
@@ -189,10 +190,6 @@
                 word-wrap: break-word;
             }
 
-            #home, #about, #contact {
-                min-height: 100vh;
-            }
-
             #menuToggle {
                 display: none;
             }
@@ -201,7 +198,6 @@
                 display: none;
             }
 
-            /* 电脑版 footer 样式 */
             footer {
                 position: fixed;
                 bottom: 0;
@@ -213,14 +209,6 @@
             }
         }
 
-        /* 移除或注释掉这个规则，因为它会覆盖电脑版的样式 */
-        /*
-        #menu-content {
-            display: none;
-        }
-        */
-
-        /* 添加以下样式 */
         #contact a {
             color: #4d4d4d;
             text-decoration: none;
@@ -230,31 +218,19 @@
             text-decoration: underline;
         }
 
-        /* 添加以下样式 */
-        #home p, #about p, #contact p {
+        /* Center content vertically and horizontally */
+        #home, #about, #contact {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 80%; /* 限制段落宽度，促进换行 */
-            margin: 0 auto; /* 居中段落 */
-            white-space: pre-wrap; /* 保留换行符和空格 */
-            word-wrap: break-word; /* 允许长单词换行 */
+            height: 100vh;
         }
 
-        /* 电脑版两栏布局样式 */
-        @media screen and (min-width: 768px) {
-            /* ... 其他电脑版样式保持不变 ... */
-
-            #content-wrapper section {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding: 2rem; /* 添加内边距 */
-            }
-
-            #content-wrapper section h2 {
-                text-align: center;
-                margin-bottom: 1rem; /* 添加标题下方的间距 */
-            }
+        #home p, #about p, #contact p {
+            max-width: 80%;
+            margin: 1rem auto;
         }
     </style>
 </head>
@@ -284,25 +260,18 @@
         <div id="content-wrapper">
             <section id="home">
                 <h2>Welcome</h2>
-                <!-- CHANGEABLE: Add content for Welcome section -->
+                <p>Welcome to my portfolio. I'm Enxuan Chang, a passionate designer and developer.</p>
             </section>
 
             <section id="about">
                 <h2>About Me</h2>
-               
-                <p align="center">
-                    <!-- CHANGEABLE: About text -->
-                    Freak Mag is a cutting-edge digital magazine exploring the fringes of culture, art, and technology.
-                </p>
+                <p>Freak Mag is a cutting-edge digital magazine exploring the fringes of culture, art, and technology. As its creator, I strive to bring unique perspectives and innovative ideas to our readers.</p>
             </section>
 
             <section id="contact">
                 <h2>Contact Us</h2>
-                <p>
-                    <!-- CHANGEABLE: Contact text -->
-                    
-                </p>
-                <a href="mailto:enxuanz622@gmail.com">enxuanz622@gmail.com</a>
+                <p>Get in touch with us for collaborations or inquiries. We're always open to new ideas and partnerships.</p>
+                <a href="/cdn-cgi/l/email-protection#6c090214190d02165a5e5e2c0b010d0500420f0301"><span class="__cf_email__" data-cfemail="e3868d9b96828d99d5d1d1a3848e828a8fcd808c8e">[email&#160;protected]</span></a>
             </section>
         </div>
     </main>
@@ -317,7 +286,7 @@
         <div data-section="contact"></div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const menuToggle = document.getElementById('menuToggle');
         const menu = document.getElementById('menu');
         const currentYear = document.getElementById('currentYear');
