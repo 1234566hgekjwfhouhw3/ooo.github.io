@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enxuan Chang PORTFOLIO</title>
+    <style>
+        /* ... (previous styles remain unchanged) ... */
+
+        /* Add or modify these styles */
+        #home, #about, #contact {
+            text-align: center;
+        }
+
+        #home p, #about p, #contact p {
+            text-align: center;
+            max-width: 80%;
+            margin: 0 auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        #menu-content {
+            text-align: center;
+        }
+
+        #menu-content ul {
+            padding: 0;
+        }
+
+        #menu-content li {
+            margin-bottom: 1rem;
+        }
+
+        /* Ensure centering for desktop version */
+        @media screen and (min-width: 768px) {
+            #content-wrapper section {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 2rem;
+            }
+
+            #content-wrapper section h2 {
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ... (header and nav remain unchanged) ... -->
+
+    <main>
+        <div id="menu-content">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <div id="content-wrapper">
+            <section id="home">
+                <h2>Welcome</h2>
+                <!-- CHANGEABLE: Add content for Welcome section -->
+            </section>
+
+            <section id="about">
+                <h2>About Me</h2>
+                <p>
+                    <!-- CHANGEABLE: About text -->
+                    Freak Mag is a cutting-edge digital magazine exploring the fringes of culture, art, and technology.
+                </p>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>
+                    <!-- CHANGEABLE: Contact text -->
+                    Get in touch with us for collaborations or inquiries.
+                </p>
+                <a href="/cdn-cgi/l/email-protection#03666d7b76626d7935313143646e626a6f2d606c6e"><span class="__cf_email__" data-cfemail="adc8c3d5d8ccc3d79b9f9fedcac0ccc4c183cec2c0">[email&#160;protected]</span></a>
+            </section>
+        </div>
+    </main>
+
+    <!-- ... (footer and scripts remain unchanged) ... -->
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enxuan Chang PORTFOLIO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #menuToggle {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+        #menuToggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 900;
+        }
+        nav.active {
+            display: flex;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav li {
+            margin: 1rem 0;
+        }
+        nav a {
+            font-size: 2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        #about {
+            background-color: #e0e0e0;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #d0d0d0;
+        }
+        .scroll-indicator {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .scroll-indicator div {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #999;
+            margin: 4px 0;
+        }
+        .scroll-indicator div.active {
+            background-color: #333;
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>
+            <!-- CHANGEABLE: Magazine name -->
+            PORTFOLIO
+        </h2>
+        <button id="menuToggle">MENU</button>
+    </header>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="home">
+            <h2>
+                <!-- CHANGEABLE: Welcome message -->
+                Welcome
+            </h2>
+            <!-- CHANGEABLE: Add an image here if desired -->
+            <!-- <img src="path/to/your/image.jpg" alt="Freak Mag Cover"> -->
+        </section>
+
+        <section id="about">
+            <div>
+                <h2>About Me</h2>
+                <p>
+                    <!-- CHANGEABLE: About text -->
+                    Freak Mag is a cutting-edge digital magazine exploring the fringes of culture, art, and technology.
+                </p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div>
+                <h2>Contact Us</h2>
+                <p>
+                    <!-- CHANGEABLE: Contact text -->
+                    Get in touch with us for collaborations or inquiries.
+                </p>
+                <a href="mailto:info@freakmag.com">
+                    <!-- CHANGEABLE: Email address -->
+                    enxuanz622@gmail.com
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Enxuan Chang. All rights reserved.</p>
+    </footer>
+
+    <div class="scroll-indicator">
+        <div class="active" data-section="home"></div>
+        <div data-section="about"></div>
+        <div data-section="contact"></div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('menu');
+        const currentYear = document.getElementById('currentYear');
+        const sections = document.querySelectorAll('section');
+        const scrollIndicators = document.querySelectorAll('.scroll-indicator div');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.textContent = menu.classList.contains('active') ? 'CLOSE' : 'MENU';
+        });
+
+        currentYear.textContent = new Date().getFullYear();
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            scrollIndicators.forEach(indicator => {
+                indicator.classList.toggle('active', indicator.dataset.section === current);
+            });
+        });
+    </script>
+</body>
+</html>

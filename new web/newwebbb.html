@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enxuan Chang PORTFOLIO</title>
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10vh; /* 移动版保持 10% 高度 */
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 1000;
+            padding: 0 5%; /* 修改 padding，左右都设为 5% */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #4d4d4d;
+        }
+        #menuToggle {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+        #menuToggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 900;
+        }
+        nav.active {
+            display: flex;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav li {
+            margin: 1rem 0;
+        }
+        nav a {
+            font-size: 2rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        #about {
+            background-color: #e0e0e0;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #d0d0d0;
+        }
+        .scroll-indicator {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .scroll-indicator div {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #999;
+            margin: 4px 0;
+        }
+        .scroll-indicator div.active {
+            background-color: #333;
+            transform: scale(1.5);
+        }
+
+        /* 移动版样式 */
+        main {
+            padding-top: 60px; /* 为 header 留出空间 */
+        }
+
+        /* 默认隐藏 #menu-content */
+        #menu-content {
+            display: none;
+        }
+
+        /* 电脑版两栏布局样式 */
+        @media screen and (min-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            h2 {
+                font-size: 1.8em; /* 减小标题大小 */
+            }
+
+            header {
+                height: 12vh; /* 电脑版改为 12% 高度 */
+            }
+
+            main {
+                display: flex;
+                padding-top: 12vh; /* 调整为与 header 高度一致 */
+            }
+
+            #menu-content {
+                display: block;
+                width: 30%;
+                height: 88vh;
+                position: fixed;
+                left: 0;
+                top: 12vh;
+                overflow-y: auto;
+                padding: calc(5% + 1rem) 1rem 1rem calc(5% + 1rem); /* 修改上内边距 */
+                box-sizing: border-box;
+                background-color: #f0f0f0;
+                border-right: 1px solid #4d4d4d;
+            }
+
+            #menu-content ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0; /* 确保 ul 没有默认边距 */
+            }
+
+            #menu-content li {
+                margin-bottom: 1rem;
+            }
+
+            #menu-content a {
+                font-size: 1.2em;
+                text-decoration: none;
+                color: #333;
+            }
+
+            #content-wrapper {
+                width: 70%;
+                margin-left: 30%; /* 保持不变，因为左栏总宽度仍为 30% */
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 60px; /* 为 footer 留出空间 */
+            }
+
+            #home, #about, #contact {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+            }
+
+            #home h2, #about h2, #contact h2 {
+                margin-bottom: 1rem;
+            }
+
+            #home p, #about p, #contact p {
+                text-align: center;
+                max-width: 80%;
+                margin: 0 auto;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+
+            #home, #about, #contact {
+                min-height: 100vh;
+            }
+
+            #menuToggle {
+                display: none;
+            }
+
+            nav {
+                display: none;
+            }
+
+            /* 电脑版 footer 样式 */
+            footer {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 70%;
+                text-align: center;
+                padding: 1rem;
+                background-color: transparent;
+            }
+        }
+
+        /* 移除或注释掉这个规则，因为它会覆盖电脑版的样式 */
+        /*
+        #menu-content {
+            display: none;
+        }
+        */
+
+        /* 添加以下样式 */
+        #contact a {
+            color: #4d4d4d;
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* 添加以下样式 */
+        #home p, #about p, #contact p {
+            text-align: center;
+            max-width: 80%; /* 限制段落宽度，促进换行 */
+            margin: 0 auto; /* 居中段落 */
+            white-space: pre-wrap; /* 保留换行符和空格 */
+            word-wrap: break-word; /* 允许长单词换行 */
+        }
+
+        /* 电脑版两栏布局样式 */
+        @media screen and (min-width: 768px) {
+            /* ... 其他电脑版样式保持不变 ... */
+
+            #content-wrapper section {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 2rem; /* 添加内边距 */
+            }
+
+            #content-wrapper section h2 {
+                text-align: center;
+                margin-bottom: 1rem; /* 添加标题下方的间距 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>PORTFOLIO</h2>
+        <button id="menuToggle">MENU</button>
+    </header>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="menu-content">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <div id="content-wrapper">
+            <section id="home">
+                <h2>Welcome</h2>
+                <!-- CHANGEABLE: Add content for Welcome section -->
+            </section>
+
+            <section id="about">
+                <h2>About Me</h2>
+               
+                <p align="center">
+                    <!-- CHANGEABLE: About text -->
+                    Freak Mag is a cutting-edge digital magazine exploring the fringes of culture, art, and technology.
+                </p>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Us</h2>
+                <p>
+                    <!-- CHANGEABLE: Contact text -->
+                    
+                </p>
+                <a href="mailto:enxuanz622@gmail.com">enxuanz622@gmail.com</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Enxuan Chang. All rights reserved.</p>
+    </footer>
+
+    <div class="scroll-indicator">
+        <div class="active" data-section="home"></div>
+        <div data-section="about"></div>
+        <div data-section="contact"></div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('menu');
+        const currentYear = document.getElementById('currentYear');
+        const sections = document.querySelectorAll('section');
+        const scrollIndicators = document.querySelectorAll('.scroll-indicator div');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.textContent = menu.classList.contains('active') ? 'CLOSE' : 'MENU';
+        });
+
+        currentYear.textContent = new Date().getFullYear();
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            scrollIndicators.forEach(indicator => {
+                indicator.classList.toggle('active', indicator.dataset.section === current);
+            });
+        });
+    </script>
+</body>
+</html>
