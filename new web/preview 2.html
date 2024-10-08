@@ -463,6 +463,20 @@
         #about p {
             margin-top: 0.25rem;
         }
+
+        @media screen and (max-width: 767px) {
+            /* Existing mobile styles... */
+
+            /* Center the welcome text in mobile view */
+            .carousel-content {
+                width: 90%; /* Adjust width for better mobile display */
+                text-align: center;
+            }
+
+            .carousel-content h2 {
+                font-size: 3rem; /* Reduce font size for mobile */
+            }
+        }
     </style>
 </head>
 <body>
