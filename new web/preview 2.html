@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enxuan Chang PORTFOLIO</title>
+    <link href="https://fonts.cdnfonts.com/css/neue-power" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/gellix" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'gellix', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #000;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10vh;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #4d4d4d;
+        }
+        header h2 {
+            font-family: 'Neue Power', sans-serif;
+            font-weight: 900;
+        }
+        #menuToggle {
+            background: none;
+            border: none;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s;
+        }
+        #menuToggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 900;
+        }
+        nav.active {
+            display: flex;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav li {
+            margin: 1rem 0;
+        }
+        nav a {
+            font-size: 2rem;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        #about {
+            border-top: 1px solid #000;
+            background-color: transparent;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: transparent;
+            border-top: 1px solid #000;
+        }
+        .scroll-indicator {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .scroll-indicator div {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #999;
+            margin: 4px 0;
+        }
+        .scroll-indicator div.active {
+            background-color: #333;
+            transform: scale(1.5);
+        }
+
+        /* Mobile styles */
+        main {
+            padding-top: 10vh;
+        }
+
+        #menu-content {
+            display: none;
+        }
+
+        /* Desktop styles */
+        @media screen and (min-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            header {
+                height: 12vh;
+            }
+
+            main {
+                display: flex;
+                padding-top: 12vh;
+            }
+
+            #menu-content {
+                display: block;
+                width: 25%;
+                height: 88vh;
+                position: fixed;
+                left: 0;
+                top: 12vh;
+                overflow-y: auto;
+                padding: 3rem 1rem 1rem calc(3% + 1rem);
+                box-sizing: border-box;
+                background-color: #f9f9f9;
+                border-right: 1px solid #4d4d4d;
+            }
+
+            #menu-content ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                line-height: 1.5;
+            }
+
+            #menu-content li {
+                margin-bottom: 3%;
+            }
+
+            #menu-content a {
+                font-size: 1.2em;
+                text-decoration: none;
+                color: #000;
+            }
+
+            #content-wrapper {
+                width: 75%;
+                margin-left: 25%;
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 60px;
+                height: auto;
+                overflow-y: visible;
+                background-color: #ffffff;
+            }
+
+            #home, #about, #contact {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #home h2, #about h2, #contact h2 {
+                margin-bottom: 0.5rem;
+            }
+
+            #home p, #about p, #contact p {
+                text-align: center;
+                max-width: 80%;
+                margin: 0 auto;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+
+            #menuToggle {
+                display: none;
+            }
+
+            nav {
+                display: none;
+            }
+
+            footer {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 75%;
+                text-align: center;
+                padding: 1rem;
+                background-color: transparent;
+                border-top: 1px solid #000;
+                box-sizing: border-box;
+            }
+        }
+
+        #contact a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Center content vertically and horizontally */
+        #home, #about, #contact {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #home {
+            height: 65vh;
+        }
+
+        #about, #contact {
+            height: auto;
+            min-height: 50vh;
+        }
+
+        #home p, #about p, #contact p {
+            max-width: 80%;
+            margin: 0.5rem auto;
+        }
+
+        /* Carousel styles */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-content {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #000;
+            z-index: 10;
+            white-space: nowrap;
+            width: 60%;
+        }
+
+        .carousel-content h2 {
+            font-family: 'Neue Power', sans-serif;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .carousel-content p {
+            font-size: 1.2rem;
+        }
+
+        /* Ensure the home section fills 65% of the height */
+        #home {
+            height: 65vh;
+            padding: 0;
+        }
+
+        /* Ensure the carousel fills the entire home section */
+        #home .carousel {
+            height: 100%;
+        }
+
+        @media screen and (min-width: 768px) {
+            #home, #about, #contact {
+                padding-top: 0;
+            }
+
+            #content-wrapper {
+                width: 75%;
+                margin-left: 25%;
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 60px;
+                height: auto;
+                overflow-y: visible;
+            }
+
+            #home, #about, #contact {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        /* Updated styles for the image grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            width: 100%;
+            margin: 2rem 0 0;
+            border: 0.75px solid #000;
+        }
+
+        .image-grid .grid-item {
+            border-bottom: 0.5px solid #000;
+            border-right: 0.5px solid #000;
+            padding: 0;
+        }
+
+        .image-grid .grid-item:nth-child(3n) {
+            border-right: none;
+        }
+
+        .image-grid .grid-item:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            border-bottom: 0.5px solid #000;
+        }
+
+        .image-grid .item-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+        }
+
+        .image-grid p {
+            margin: 0;
+            font-size: 0.875rem;
+        }
+
+        .image-grid button {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        @media screen and (max-width: 767px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                width: 100vw;
+                margin-left: -2rem;
+                margin-right: -2rem;
+            }
+
+            .image-grid .grid-item:nth-child(3n) {
+                border-left: 0px solid #000;
+                border-right: 0.5px solid #000;
+            }
+
+            .image-grid .grid-item:nth-child(2n) {
+                border-right: none;
+            }
+
+            .image-grid .grid-item:nth-last-child(-n+2) {
+                border-bottom: none;
+            }
+
+            /* Ensure the 4th image has a bottom border on mobile */
+            .image-grid .grid-item:nth-child(4) {
+                border-bottom: 0.5px solid #000;
+            }
+
+            /* Reduce Welcome text size on mobile */
+            .carousel-content h2 {
+                font-size: 3rem;
+            }
+
+            /* Adjust spacing for mobile */
+            #about {
+                border-bottom: none; /* Remove bottom border for mobile */
+                padding-bottom: calc(5% + 2rem);
+            }
+
+            .image-grid {
+                margin-bottom: 5%;
+            }
+
+            #contact {
+                padding-top: 2rem;
+            }
+        }
+
+        /* Add separator line between image grid and contact section */
+        #about {
+            border-bottom: none; /* Remove bottom border */
+            padding: 2rem 0 0;
+        }
+
+        #contact {
+            padding-top: 2rem;
+            border-top: none; /* Remove top border for both mobile and desktop */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>ENXUANZ</h2>
+        <button id="menuToggle">MENU</button>
+    </header>
+
+    <nav id="menu">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="menu-content">
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <div id="content-wrapper">
+            <section id="home">
+                <div class="carousel">
+                    <div class="carousel-item active">
+                        <img src="eq7nz-0vh8j.gif" alt="Carousel Image 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="k8z2z-u25ew.gif" alt="Carousel Image 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://source.unsplash.com/random/1920x1080?sig=3" alt="Carousel Image 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://source.unsplash.com/random/1920x1080?sig=4" alt="Carousel Image 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://source.unsplash.com/random/1920x1080?sig=5" alt="Carousel Image 5">
+                    </div>
+                    <div class="carousel-content">
+                        <h2>Welcome</h2>
+                        <p></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about">
+                <h2>About Me</h2>
+                <p>Hello, I am a second-year university student full of passion for design.</p>
+                <div class="image-grid">
+                    <div class="grid-item">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Work 1">
+                        <div class="item-info">
+                            <p>Lorem ipsum</p>
+                            <button>view</button>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Work 2">
+                        <div class="item-info">
+                            <p>Lorem ipsum</p>
+                            <button>view</button>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Work 3">
+                        <div  class="item-info">
+                            <p>Lorem  ipsum</p>
+                            <button>view</button>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Work 4">
+                        <div class="item-info">
+                            <p>Lorem ipsum</p>
+                            <button>view</button>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Work 5">
+                        <div class="item-info">
+                            <p>Lorem ipsum</p>
+                            <button>view</button>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <img src="/placeholder.svg?height=400&width=400" alt="Work 6">
+                        <div class="item-info">
+                            <p>Lorem ipsum</p>
+                            <button>view</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact Me</h2>
+                <p>Get in touch with me for collaborations or inquiries.</p>
+                <a href="mailto:zhangenxuan72@gmail.com">zhangenxuan72@gmail.com</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Enxuan Zhang. All rights reserved.</p>
+    </footer>
+
+    <div class="scroll-indicator">
+        <div class="active" data-section="home"></div>
+        <div data-section="about"></div>
+        <div data-section="contact"></div>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('menu');
+        const currentYear = document.getElementById('currentYear');
+        const sections = document.querySelectorAll('section');
+        const scrollIndicators = document.querySelectorAll('.scroll-indicator div');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            menuToggle.textContent = menu.classList.contains('active') ? 'CLOSE' : 'MENU';
+        });
+
+        currentYear.textContent = new Date().getFullYear();
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            scrollIndicators.forEach(indicator => {
+                indicator.classList.toggle('active', indicator.dataset.section === current);
+            });
+        });
+
+        // Carousel functionality
+        const carouselItems = document.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            carouselItems[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % carouselItems.length;
+            carouselItems[currentIndex].classList.add('active');
+        }
+
+        // Set interval to switch images every 5 seconds
+        setInterval(showNextImage, 5000);
+    </script>
+</body>
+</html>
