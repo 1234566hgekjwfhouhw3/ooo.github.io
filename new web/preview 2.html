@@ -364,8 +364,8 @@
 
         .image-grid img {
             width: 100%;
-            height: auto;
-            aspect-ratio: 1 / 1;
+            height: 0;
+            padding-bottom: 100%; /* This creates a 1:1 aspect ratio */
             object-fit: cover;
             display: block;
             border-bottom: 0.5px solid #000;
@@ -375,23 +375,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0;
+            padding: 0.5rem;
         }
 
         .image-grid p {
             margin: 0;
             font-size: 0.875rem;
             text-align: left;
-            padding: 10px 0 10px 10px;
         }
 
         .image-grid button {
             background: none;
             border: none;
-            padding: 10px 10px 10px 0;
+            padding: 0;
             cursor: pointer;
             font-size: 0.875rem;
-            color: #000;
+            color: #666666; /* Updated color to #666666 */
         }
 
         @media screen and (max-width: 767px) {
@@ -523,8 +522,9 @@
                         <p></p>
                     </div>
                 </div>
-            
             </section>
+
+            
 
             <section id="about">
                 <h2>About Me</h2>
