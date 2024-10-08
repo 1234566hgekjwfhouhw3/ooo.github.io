@@ -74,7 +74,7 @@
             font-weight: bold;
         }
         section {
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -90,6 +90,9 @@
             text-align: center;
             padding: 2rem;
             background-color: transparent;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid #000;
         }
         .scroll-indicator {
@@ -176,7 +179,7 @@
                 display: flex;
                 flex-direction: column;
                 padding-bottom: 60px;
-                height: auto;
+                min-height: calc(100vh - 12vh);
                 overflow-y: visible;
                 background-color: #ffffff;
             }
@@ -209,10 +212,8 @@
             }
 
             footer {
-                position: fixed;
-                bottom: 0;
-                right: 0;
-                width: 75%;
+                margin-top: auto;
+                width: 100%;
                 text-align: center;
                 padding: 1rem;
                 background-color: transparent;
@@ -283,11 +284,12 @@
 
         .carousel-content {
             position: absolute;
-            top: 40%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: #000;
+            color: #fff;
+            mix-blend-mode: difference;
             z-index: 10;
             white-space: nowrap;
             width: 60%;
@@ -326,7 +328,7 @@
                 display: flex;
                 flex-direction: column;
                 padding-bottom: 60px;
-                height: auto;
+                min-height: calc(100vh - 12vh);
                 overflow-y: visible;
             }
 
@@ -373,20 +375,23 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem;
+            padding: 0;
         }
 
         .image-grid p {
             margin: 0;
             font-size: 0.875rem;
+            text-align: left;
+            padding: 10px 0 10px 10px;
         }
 
         .image-grid button {
             background: none;
             border: none;
-            padding: 0;
+            padding: 10px 10px 10px 0;
             cursor: pointer;
             font-size: 0.875rem;
+            color: #000;
         }
 
         @media screen and (max-width: 767px) {
@@ -445,6 +450,31 @@
             padding-top: 2rem;
             border-top: none; /* Remove top border for both mobile and desktop */
         }
+
+        /* New styles for the MORE button */
+        .more-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .more-button:hover {
+            background-color: #333;
+        }
+
+        /* Adjusted spacing between "About Me" and the introduction text */
+        #about h2 {
+            margin-bottom: 0.25rem;
+        }
+
+        #about p {
+            margin-top: 0.25rem;
+        }
     </style>
 </head>
 <body>
@@ -493,11 +523,14 @@
                         <p></p>
                     </div>
                 </div>
+            
             </section>
 
             <section id="about">
                 <h2>About Me</h2>
                 <p>Hello, I am a second-year university student full of passion for design.</p>
+                <button class="more-button">More info</button>
+                <br>
                 <div class="image-grid">
                     <div class="grid-item">
                         <img src="/placeholder.svg?height=400&width=400" alt="Work 1">
@@ -516,7 +549,7 @@
                     <div class="grid-item">
                         <img src="/placeholder.svg?height=400&width=400" alt="Work 3">
                         <div  class="item-info">
-                            <p>Lorem  ipsum</p>
+                            <p>Lorem ipsum</p>
                             <button>view</button>
                         </div>
                     </div>
@@ -547,14 +580,14 @@
             <section id="contact">
                 <h2>Contact Me</h2>
                 <p>Get in touch with me for collaborations or inquiries.</p>
-                <a href="mailto:zhangenxuan72@gmail.com">zhangenxuan72@gmail.com</a>
+                <a href="mailto:example@example.com">example@example.com</a>
             </section>
+
+            <footer>
+                <p>&copy; <span id="currentYear"></span> Enxuan Zhang. All rights reserved.</p>
+            </footer>
         </div>
     </main>
-
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Enxuan Zhang. All rights reserved.</p>
-    </footer>
 
     <div class="scroll-indicator">
         <div class="active" data-section="home"></div>
