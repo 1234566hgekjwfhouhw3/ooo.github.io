@@ -21,9 +21,9 @@
             left: 0;
             right: 0;
             height: 10vh;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(50px);
             z-index: 1000;
             padding: 0 4%;
             display: flex;
@@ -89,11 +89,12 @@
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: transparent;
             background-color: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(20px);
             border-top: 1px solid #000;
+            width: 100%;
+            box-sizing: border-box;
         }
         .scroll-indicator {
             position: fixed;
@@ -178,10 +179,9 @@
                 margin-left: 25%;
                 display: flex;
                 flex-direction: column;
-                padding-bottom: 60px;
                 min-height: calc(100vh - 12vh);
                 overflow-y: visible;
-                background-color: #ffffff;
+                padding-bottom: 0; /* 移除底部内边距 */
             }
 
             #home, #about, #contact {
@@ -212,11 +212,11 @@
             }
 
             footer {
-                margin-top: auto;
+                margin-top: auto; /* 将 footer 推到内容底部 */
                 width: 100%;
                 text-align: center;
                 padding: 1rem;
-                background-color: transparent;
+                background-color: rgba(255, 255, 255, 0.8);
                 border-top: 1px solid #000;
                 box-sizing: border-box;
             }
@@ -284,7 +284,7 @@
 
         .carousel-content {
             position: absolute;
-            top: 45%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
@@ -327,9 +327,9 @@
                 margin-left: 25%;
                 display: flex;
                 flex-direction: column;
-                padding-bottom: 60px;
                 min-height: calc(100vh - 12vh);
                 overflow-y: visible;
+                padding-bottom: 0; /* 移除底部内边距 */
             }
 
             #home, #about, #contact {
@@ -477,6 +477,115 @@
                 font-size: 3rem; /* Reduce font size for mobile */
             }
         }
+
+        /* 修改 .more-button 样式并添加 .work-button 样式 */
+        .rounded-button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 25px; /* 添加圆角 */
+        }
+
+        .rounded-button:hover {
+            background-color: #333;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* 按钮之间的间距 */
+        }
+
+        /* 可以为 work-button 添加特定样式，如果需要的话 */
+        .work-button {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+        }
+
+        .work-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* 修改 #home 部分的样式 */
+        #home {
+            height: 70vh; /* 设置为全屏高度 */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 修改 carousel 样式 */
+        #home .carousel {
+            position: fixed;
+            top: 0;
+            left: 25%; /* 与 #content-wrapper 的 margin-left 对应 */
+            width: 75%; /* 与 #content-wrapper 的宽度对应 */
+            height: 100vh;
+            z-index: -1; /* 确保在内容下方 */
+        }
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 调整 #content-wrapper 样式 */
+        #content-wrapper {
+            background-color: transparent; /* 移除背景色 */
+        }
+
+        /* 调整其他部分的背景 */
+        #about, #contact, footer {
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+            position: relative; /* 确保在轮播图之上 */
+            width: 100%; /* 确保宽度为100% */
+        }
+
+        /* 移动端样式调整 */
+        @media screen and (max-width: 767px) {
+            #home .carousel {
+                left: 0;
+                width: 100%;
+            }
+
+            #content-wrapper {
+                width: 100%;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            footer {
+                width: 100%;
+                padding: 1rem;
+                margin: 0;
+                box-sizing: border-box;
+            }
+        }
+
+        /* 确保最后一个部分填充剩余空间 */
+        #content-wrapper > :last-child:not(footer) {
+            flex-grow: 1;
+        }
     </style>
 </head>
 <body>
@@ -509,16 +618,16 @@
                         <img src="eq7nz-0vh8j.gif" alt="Carousel Image 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="k8z2z-u25ew.gif" alt="Carousel Image 2">
+                        <img src="IMG_9329.GIF" alt="Carousel Image 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://source.unsplash.com/random/1920x1080?sig=3" alt="Carousel Image 3">
+                        <img src="IMG_9329.GIF" alt="Carousel Image 3">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://source.unsplash.com/random/1920x1080?sig=4" alt="Carousel Image 4">
+                        <img src="IMG_9329.GIF" alt="Carousel Image 4">
                     </div>
                     <div class="carousel-item">
-                        <img src="https://source.unsplash.com/random/1920x1080?sig=5" alt="Carousel Image 5">
+                        <img src="IMG_9324.GIF" alt="Carousel Image 5">
                     </div>
                     <div class="carousel-content">
                         
@@ -531,11 +640,14 @@
             <section id="about">
                 <h2>About Me</h2>
                 <p>Hello, I am a second-year university student full of passion for design.</p>
-                <button class="more-button">MORE</button>
+                <div class="button-group">
+                    <button class="rounded-button more-button">More info</button>
+                    <button class="rounded-button work-button">All work</button>
+                </div>
                 <br>
                 <div class="image-grid">
                     <div class="grid-item">
-                        <img src="https://via.placeholder.com/400" alt="Work 1">
+                        <img src="未命名-1-13.jpg" alt="Work 1">
                         <div class="item-info">
                             <p>Lorem ipsum</p>
                             <button>view</button>
@@ -570,7 +682,7 @@
                         </div>
                     </div>
                     <div class="grid-item">
-                        <img src="https://via.placeholder.com/400" alt="Work 6">
+                        <img src="eq7nz-0vh8j.gif" alt="Work 6">
                         <div class="item-info">
                             <p>Lorem ipsum</p>
                             <button>view</button>
@@ -582,7 +694,7 @@
             <section id="contact">
                 <h2>Contact Me</h2>
                 <p>Get in touch with me for collaborations or inquiries.</p>
-                <a href="mailto:example@example.com">example@example.com</a>
+                <a href="mailto:zhangenxuan72@gmail.com">zhangenxuan72@gmail.com</a>
             </section>
 
             <footer>
