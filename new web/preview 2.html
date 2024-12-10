@@ -636,6 +636,35 @@
             font-family: 'Sora', sans-serif;
             font-weight: 700 !important;
         }
+
+        /* 手機版字體大小調整 */
+        @media screen and (max-width: 767px) {
+            /* About Me 和 Contact Me 的內文 */
+            #about p, #contact p {
+                font-size: 0.9rem; /* 縮小內文字體 */
+                line-height: 1.4; /* 調整行高 */
+            }
+
+            /* 聯絡信箱 */
+            #contact a {
+                font-size: 0.9rem;
+            }
+
+            /* 圖片網格的說明文字 */
+            .image-grid p {
+                font-size: 0.8rem; /* 縮小圖片說明文字 */
+            }
+
+            .image-grid button {
+                font-size: 0.8rem; /* 縮小按鈕文字 */
+            }
+
+            /* 按鈕文字 */
+            .rounded-button {
+                font-size: 0.9rem; /* 縮小按鈕文字 */
+                padding: 8px 16px; /* 稍微調整按鈕大小 */
+            }
+        }
     </style>
 </head>
 <body>
