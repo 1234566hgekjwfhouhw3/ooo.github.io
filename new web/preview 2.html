@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enxuan Chang PORTFOLIO</title>
-    <link href="https://fonts.cdnfonts.com/css/neue-power" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/gellix" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Base styles */
         body {
-            font-family: 'gellix', Arial, sans-serif;
+            font-family: 'Sora', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #ffffff;
@@ -25,15 +27,34 @@
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(50px);
             z-index: 1000;
-            padding: 0 4%;
+            padding: 0 4% 0 8% ;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #4d4d4d;
         }
         header h2 {
-            font-family: 'Neue Power', sans-serif;
-            font-weight: 900;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            transform: scaleX(1.2);
+            display: flex;
+            align-items: center;
+            line-height: 0.9;
+        }
+        header h2 .ex {
+            margin-right: 0.2em;
+            font-size: 1.2em;
+        }
+        header h2 .design-studio {
+            display: inline-block;
+            text-align: left;
+            font-size: 0.5em;
+            line-height: 1.2;
+            color: #333333;
+            font-weight: 600;
+        }
+        header h2 .design-studio span {
+            display: inline-block;
         }
         #menuToggle {
             background: none;
@@ -43,6 +64,7 @@
             cursor: pointer;
             padding: 0.5rem 1rem;
             transition: background-color 0.3s;
+            font-family: 'Sora', sans-serif;
         }
         #menuToggle:hover {
             background-color: rgba(0, 0, 0, 0.1);
@@ -72,6 +94,12 @@
             text-decoration: none;
             color: #000;
             font-weight: bold;
+            font-family: 'Sora', sans-serif;
+            transition: all 0.3s ease;
+        }
+        nav a.clicked {
+            filter: blur(3px);
+            opacity: 0.6;
         }
         section {
             min-height: 80vh;
@@ -95,6 +123,7 @@
             border-top: 1px solid #000;
             width: 100%;
             box-sizing: border-box;
+            font-family: 'Sora', sans-serif;
         }
         .scroll-indicator {
             position: fixed;
@@ -136,6 +165,7 @@
 
             header {
                 height: 12vh;
+                padding: 0 5%;
             }
 
             main {
@@ -161,17 +191,24 @@
                 list-style-type: none;
                 padding: 0;
                 margin: 0;
-                line-height: 1.5;
+                line-height: 2;
             }
 
             #menu-content li {
-                margin-bottom: 3%;
+                margin-bottom: 5%;
             }
 
             #menu-content a {
                 font-size: 1.2em;
                 text-decoration: none;
                 color: #000;
+                font-family: 'Sora', sans-serif;
+                transition: all 0.3s ease;
+            }
+
+            #menu-content a.clicked {
+                filter: blur(3px);
+                opacity: 0.6;
             }
 
             #content-wrapper {
@@ -219,6 +256,10 @@
                 background-color: rgba(255, 255, 255, 0.8);
                 border-top: 1px solid #000;
                 box-sizing: border-box;
+            }
+
+            header h2 {
+                font-size: 2.25rem;
             }
         }
 
@@ -296,10 +337,10 @@
         }
 
         .carousel-content h2 {
-            font-family: 'Neue Power', sans-serif;
+            font-family: 'Sora', sans-serif;
             font-size: 5rem;
             margin-bottom: 1rem;
-            font-weight: 900;
+            font-weight: 700;
         }
 
         .carousel-content p {
@@ -388,6 +429,7 @@
             text-align: left;
             padding: 10px;
             flex-grow: 1;
+            font-family: 'Sora', sans-serif;
         }
 
         .image-grid button {
@@ -399,6 +441,7 @@
             font-size: 0.875rem;
             color: #666666;
             height: 100%;
+            font-family: 'Sora', sans-serif;
         }
 
         @media screen and (max-width: 767px) {
@@ -489,6 +532,7 @@
             margin-top: 1rem;
             transition: background-color 0.3s, color 0.3s;
             border-radius: 25px; /* 添加圆角 */
+            font-family: 'Sora', sans-serif;
         }
 
         .rounded-button:hover {
@@ -586,11 +630,17 @@
         #content-wrapper > :last-child:not(footer) {
             flex-grow: 1;
         }
+
+        /* Add this style in the <style> section */
+        #about h2, #contact h2 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 700 !important;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h2>ENXUANZ</h2>
+        <h2><span class="ex">EX</span><span class="design-studio"><span>DESIGN</span><br><span>STUDIO</span></span></h2>
         <button id="menuToggle">MENU</button>
     </header>
 
@@ -618,16 +668,10 @@
                         <img src="eq7nz-0vh8j.gif" alt="Carousel Image 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="IMG_9329.GIF" alt="Carousel Image 2">
+                        <img src="eq7nz-0vh8j.gif" alt="Carousel Image 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="IMG_9329.GIF" alt="Carousel Image 3">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="IMG_9329.GIF" alt="Carousel Image 4">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="IMG_9324.GIF" alt="Carousel Image 5">
+                        <img src="eq7nz-0vh8j.gif" alt="Carousel Image 3">
                     </div>
                     <div class="carousel-content">
                         
@@ -661,7 +705,7 @@
                         </div>
                     </div>
                     <div class="grid-item">
-                        <img src="https://via.placeholder.com/400" alt="Work 3">
+                        <img src="作品集_工作區域 1 複本 4.jpg" alt="Work 3">
                         <div  class="item-info">
                             <p>Lorem ipsum</p>
                             <button>view</button>
@@ -684,8 +728,8 @@
                     <div class="grid-item">
                         <img src="eq7nz-0vh8j.gif" alt="Work 6">
                         <div class="item-info">
-                            <p>Lorem ipsum</p>
-                            <button>view</button>
+                            <p>Sketch</p>
+                            <button> <a href="https://www.instagram.com/3oodpi/">view</a></button>
                         </div>
                     </div>
                 </div>
@@ -715,6 +759,15 @@
         const currentYear = document.getElementById('currentYear');
         const sections = document.querySelectorAll('section');
         const scrollIndicators = document.querySelectorAll('.scroll-indicator div');
+        
+        // 為菜單中的所有鏈接添加點擊事件
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                menuToggle.textContent = 'MENU';
+            });
+        });
 
         menuToggle.addEventListener('click', () => {
             menu.classList.toggle('active');
@@ -748,8 +801,59 @@
             carouselItems[currentIndex].classList.add('active');
         }
 
-        // Set interval to switch images every 5 seconds
         setInterval(showNextImage, 5000);
+
+        const menuContentLinks = document.querySelectorAll('#menu-content a');
+        
+        menuContentLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // 移除其他鏈接的 clicked 類
+                menuContentLinks.forEach(l => l.classList.remove('clicked'));
+                // 為當前點擊的鏈接添加 clicked 類
+                this.classList.add('clicked');
+            });
+        });
+
+        // 頁面加載時檢查當前位置
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const activeLink = document.querySelector(`#menu-content a[href="${hash}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('clicked');
+                }
+            }
+        });
+
+        // 更新 JavaScript，為手機版菜單添加點擊效果
+        const mobileMenuLinks = document.querySelectorAll('nav a');
+        
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // 移除其他鏈接的 clicked 類
+                mobileMenuLinks.forEach(l => l.classList.remove('clicked'));
+                // 為當前點擊的鏈接添加 clicked 類
+                this.classList.add('clicked');
+                // 關閉菜單
+                menu.classList.remove('active');
+                menuToggle.textContent = 'MENU';
+            });
+        });
+
+        // 頁面加載時檢查當前位置（同時處理手機版和電腦版）
+        window.addEventListener('load', () => {
+            const hash = window.location.hash;
+            if (hash) {
+                const activeDesktopLink = document.querySelector(`#menu-content a[href="${hash}"]`);
+                const activeMobileLink = document.querySelector(`nav a[href="${hash}"]`);
+                if (activeDesktopLink) {
+                    activeDesktopLink.classList.add('clicked');
+                }
+                if (activeMobileLink) {
+                    activeMobileLink.classList.add('clicked');
+                }
+            }
+        });
     </script>
 </body>
 </html>
