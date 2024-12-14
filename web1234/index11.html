@@ -134,7 +134,8 @@
         .portfolio {
             padding: 50px 0;
             min-height: 100vh; /* 確保容器至少占滿全屏 */
-            overflow: hidden; /* 隱藏超出容器的部分 */
+            padding-bottom: 50px; /* 給容器底部留一些空間，防止圖片壓到footer */
+            box-sizing: border-box; /* 確保padding不會影響總高度 */
         }
         .portfolio-grid {
             display: grid;
