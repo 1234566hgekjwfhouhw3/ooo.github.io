@@ -132,7 +132,9 @@
             margin-top: 1rem;
         }
         .portfolio {
-            padding: 50px 0px 5%;
+            padding: 50px 0;
+            min-height: 100vh; /* 確保容器至少占滿全屏 */
+            overflow: hidden; /* 隱藏超出容器的部分 */
         }
         .portfolio-grid {
             display: grid;
